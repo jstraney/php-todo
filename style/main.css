@@ -1,0 +1,168 @@
+/**** MAIN CSS ****/
+
+/* CSS has the ability to import other CSS files by URL
+ * this is especially useful for getting special fonts
+ * or using CSS libraries from a remote URL
+ */
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
+
+/* adding this will save you a lot of grief when styling */
+*, *:after, *:before {
+  box-sizing: border-box;
+}
+
+/* A lot of people will go nuts with classes and ID's 
+ * but a lot can be done with a good understanding of what
+ * each element does out of the box. It's not necessary to
+ * wrap everything in a 'div' tag
+ */
+body {
+  margin     : 0;
+  padding    : 0;
+  font-size  : 1.2em;
+  line-height: 1.6;
+  /* using the font loaded from google*/
+  font-family: "Source Sans Pro", arial, sans-serif;
+  color : #222222;
+  height: 100%;
+  background-color: #DDDDDD;
+  /* can help fonts look nicer. gives a more professional look */
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+}
+
+label {
+  /* - Display property -
+   * there are three main display types
+   * "block", "inline", and "inline-block"
+   * blocks stack vertically and take up as much space horizontally by default
+   * inline elements are in-line with text and don't behave like boxes
+   * inline-block look like blocks, but are in-line with text
+   * */
+  display: block;
+}
+
+input[type=text], input[type=password], input[type=date],
+textarea, select {
+  /* Some form elements get special styling depending on the browser 
+   * buttons, select elements, checkboxes
+   * it is common to want to customize the appearance yourself 
+   * */
+  -moz-appearance   : none;
+  -webkit-appearance: none;
+  appearance: none;
+  /* Some properties like padding and margin allow for 1, 2, 3, or 4 values.
+   * The way to remember how this works is to think of a clock. The values always
+   * start from top, then right, bottom then left so:
+   * 1 value = all four sides
+   * 2 values = top-bottom right-left
+   * 3 values = top right-left bottom 
+   * 4 values = top right bottom left
+   * */
+  padding: .3em .5em;
+  border: 1px solid #CCCCCC;
+  /* roundness of border */
+  border-radius: 4px;
+  /* overrides font size of input to use the parents font-size
+   * the browser explicitly sets the font size of several elements
+   * and won't update when you set the body font-size (which you would
+   * expect to cascade)
+   * */
+  font-size: inherit;
+  margin-bottom: 1em;
+}
+
+/* This is a class selector */
+.container {
+  max-width: 685px;
+  margin: 20vh auto;
+  padding: 1em;
+  background-color: #FFFFFF;
+  border-radius: 4px;
+  border-top: 1px solid #CCCCCC;
+  border-right: 1px solid #CCCCCC;
+  border-left: 1px solid #CCCCCC;
+  border-bottom: 4px double #CCCCCC;
+}
+
+button, input[type=submit] {
+  -moz-appearance   : none;
+  -webkit-appearance: none;
+  appearance: none;
+  font-size : inherit;
+  border    : 1px solid #CCCCCC;
+  border-radius   : 4px;
+  background-color: #FFFFFF;
+  padding  : .3em 1em;
+  min-width: 4em;
+}
+
+/* Pseudo class selectors */
+button:hover, input[type=submit]:hover {
+  cursor: pointer;
+  background-color: #DDDDDD;
+}
+
+/* Animation definition */
+@keyframes fly-in {
+
+  /* start completely transparent and 100px down from position */
+  0% {
+    opacity: 0;
+    top: 100px; 
+  }
+
+  /* end completely visible and in natural position*/
+  100% {
+    opacity: 1;
+    top: 0; 
+  }
+
+}
+
+.todo {
+  margin-bottom: 1em;
+  opacity: 0;
+  /* Position Property
+   * there are several position properties
+   * static - the browser default, elements just "fall" into their natural position
+   * absolute - element is positioned by coordinates in regards to nearest parent
+   *   that has 'relative' positioning (the "html" tag is relative by default)
+   * fixed - element is positioned by coordinates related to the viewport.
+   *   used for 'sticky' headers that stay at the top while you scroll
+   * relative - most confusing, allows positioning 'relative' to the elements
+   *   'static' position. Would allow you to move an element 100px from where it 
+   *    would normally be if it were static for example
+   */
+  position: relative;
+  /* I always have to google animation properties... */
+  animation-name: fly-in;
+  animation-duration: .7s;
+  animation-iteration-count: 1;
+  animation-direction: normal;
+  animation-fill-mode: forwards;
+  /* many properties have a -top -right, -bottom, -left counter part
+   * and event some have -top-right, -bottom-right etc. */
+  border-radius: 4px;
+  border-top   : 1px solid #CCCCCC;
+  border-right : 1px solid #CCCCCC;
+  border-left  : 1px solid #CCCCCC;
+  /* get creative. notice the double border only on bottom*/
+  border-bottom: 4px double #CCCCCC;
+  padding: 1em .5em;
+  max-width: 320px;
+}
+
+.todo span {
+  font-size: 1.2em;
+}
+
+.todo input[type=checkbox] {
+  font-size: inherit;
+  display: inline-block;
+  /* Vertical align - a fair warning
+   * vertical align property 
+   * */
+  vertical-align: middle;
+  margin: 0 .5em;
+}
